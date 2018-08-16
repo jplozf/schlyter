@@ -1,4 +1,5 @@
 package schlyter;
+import java.util.TimeZone;
 
 public class Schlyter {
 
@@ -10,21 +11,13 @@ public class Schlyter {
     // main()
     //***********************************************************************
     public static void main(String[] args) {
-        zeDate = new fmrDate();
-        zeLocation = new fmrLocation("Paris", "France", 48.8666687, 2.333333, 42.0);
-        solarSystem = new fmrSolarSystem();
-        computeObjects();
+        zeDate = new fmrDate(1990, 4, 19, 0, 0, 0, TimeZone.getTimeZone("UT"));
+        zeLocation = fmrLocation.findStartWith("test").get(0);
+        solarSystem = new fmrSolarSystem(new fmrObserver(zeDate, zeLocation, "TEST SITE"));
         showDetailsSun();
         showDetailsMoon();
-    }
-
-    //***********************************************************************
-    // computeObjects()
-    //***********************************************************************
-    private static void computeObjects() {
-        zeDate = new fmrDate();
-        solarSystem.setDate(zeDate);
-        solarSystem.setLocation(zeLocation);
+        solarSystem.sun.printAll();
+        solarSystem.moon.printAll();
     }
 
     //***********************************************************************

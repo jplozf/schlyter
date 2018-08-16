@@ -42,7 +42,8 @@ public class fmrMoon extends fmrObject
 //******************************************************************************
     public fmrMoon()
     {
-        super(K_N0, K_N1,
+        super("Moon", 
+                K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
                 K_a0, K_a1,
@@ -52,7 +53,8 @@ public class fmrMoon extends fmrObject
 
     public fmrMoon(fmrDate d)
     {
-        super(K_N0, K_N1,
+        super("Moon",
+                K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
                 K_a0, K_a1,

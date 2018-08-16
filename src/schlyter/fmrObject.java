@@ -44,12 +44,14 @@ public class fmrObject
     private double a0, a1;  // coefficients for semi-major axis, or mean distance from Sun
     private double e0, e1;  // coefficients for eccentricity
     private double M0, M1;  // coefficients for mean anomaly
+    public String Name;
 
 //******************************************************************************
 // fmrObject()
 //******************************************************************************
-    public fmrObject(double N0, double N1, double i0, double i1, double w0, double w1, double a0, double a1, double e0, double e1, double M0, double M1)
+    public fmrObject(String Name, double N0, double N1, double i0, double i1, double w0, double w1, double a0, double a1, double e0, double e1, double M0, double M1)
     {
+        this.Name = Name;
         this.N0 = N0;
         this.i0 = i0;
         this.w0 = w0;
@@ -178,6 +180,9 @@ public class fmrObject
 //******************************************************************************
     public void printAll()
     {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(">>> OBJECT'S NAME                                                 = " + this.Name);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("d : Date of event                                                 = " + this.d);
         System.out.println("N : Longitude of the ascending node                               = " + this.N);
         System.out.println("i : Inclination to the ecliptic (plane of the Earth's orbit)      = " + this.i);

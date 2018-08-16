@@ -13,22 +13,22 @@ public class fmrLocation {
 
     public static final fmrLocation locations[]
             = {
-                new fmrLocation("Aix-en-Provence", "France", 43.5332985, 5.4333301, 0.0),
-                new fmrLocation("Amiens", "France", 49.9000015, 2.3, 0.0),
-                new fmrLocation("Angers", "France", 47.4667015, -0.55, 0.0),
-                new fmrLocation("Annecy", "France", 45.9000015, 6.1166701, 0.0),
-                new fmrLocation("Antibes", "France", 43.5833015, 7.1166701, 0.0),
-                new fmrLocation("Antony", "France", 48.75, 2.3, 0.0),
-                new fmrLocation("Argenteuil", "France", 48.9500008, 2.25, 0.0),
+                new fmrLocation("Aix-en-Provence", "France", 43.5332985, 5.4333301, 73.0),
+                new fmrLocation("Amiens", "France", 49.9000015, 2.3, 14.0),
+                new fmrLocation("Angers", "France", 47.4667015, -0.55, 12.0),
+                new fmrLocation("Annecy", "France", 45.9000015, 6.1166701, 396.0),
+                new fmrLocation("Antibes", "France", 43.5833015, 7.1166701, 9.0),
+                new fmrLocation("Antony", "France", 48.75, 2.3, 45.0),
+                new fmrLocation("Argenteuil", "France", 48.9500008, 2.25, 21.0),
                 new fmrLocation("Arles", "France", 43.6666985, 4.6333299, 0.0),
-                new fmrLocation("Aubervilliers", "France", 48.9166985, 2.3833301, 0.0),
-                new fmrLocation("Aulnay-sous-Bois", "France", 48.9500008, 2.51667, 0.0),
-                new fmrLocation("Avignon", "France", 43.9500008, 4.8166699, 0.0),
-                new fmrLocation("Beauvais", "France", 49.4333, 2.0833299, 0.0),
-                new fmrLocation("Belfort", "France", 47.6333008, 6.8666701, 0.0),
-                new fmrLocation("Besançon", "France", 47.25, 6.03333, 0.0),
-                new fmrLocation("Béziers", "France", 43.3499985, 3.25, 0.0),
-                new fmrLocation("Blois", "France", 47.5833015, 1.33333, 0.0),
+                new fmrLocation("Aubervilliers", "France", 48.9166985, 2.3833301, 33.0),
+                new fmrLocation("Aulnay-sous-Bois", "France", 48.9500008, 2.51667, 40.0),
+                new fmrLocation("Avignon", "France", 43.9500008, 4.8166699, 10.0),
+                new fmrLocation("Beauvais", "France", 49.4333, 2.0833299, 57.0),
+                new fmrLocation("Belfort", "France", 47.6333008, 6.8666701, 354.0),
+                new fmrLocation("Besançon", "France", 47.25, 6.03333, 235.0),
+                new fmrLocation("Béziers", "France", 43.3499985, 3.25, 17.0),
+                new fmrLocation("Blois", "France", 47.5833015, 1.33333, 63.0),
                 new fmrLocation("Bordeaux", "France", 44.8333015, -0.566667, 0.0),
                 new fmrLocation("Boulogne-Billancourt", "France", 48.8333015, 2.25, 0.0),
                 new fmrLocation("Bourges", "France", 47.0833015, 2.4000001, 0.0),
@@ -113,7 +113,8 @@ public class fmrLocation {
                 new fmrLocation("Versailles", "France", 48.7999992, 2.1333301, 0.0),
                 new fmrLocation("Villeneuve-d\'Ascq", "France", 50.6833, 3.14167, 0.0),
                 new fmrLocation("Villeurbanne", "France", 45.7667007, 4.8833299, 0.0),
-                new fmrLocation("Vitry-sur-Seine", "France", 48.7832985, 2.4000001, 0.0)
+                new fmrLocation("Vitry-sur-Seine", "France", 48.7832985, 2.4000001, 0.0),
+                new fmrLocation("Test-Schlyter", "Scandinavia", 60.00, 15.00, 0.0)
             };
 
     public fmrLocation(String Name, String Country, double Latitude, double Longitude, double Elevation) {
@@ -144,12 +145,25 @@ public class fmrLocation {
         return this.Name + ", " + this.Country + " @ " + fmrDate.dd2dms(this.Latitude) + " / " + fmrDate.dd2dms(this.Longitude) + " / " + Double.toString(this.Elevation) + " m";
     }
     
-    public List<fmrLocation> find(String pattern) {
+    public static List<fmrLocation> findStartWith(String pattern) {
+        List<fmrLocation> rLoc = new ArrayList<>();
+        for (fmrLocation loc: locations) {
+            if (loc.Name.matches("(?i:^" + pattern + ".*)"))
+            {
+                rLoc.add(loc);
+                System.out.println(loc.toString());
+            }
+        }
+        return rLoc;
+    }
+
+    public static List<fmrLocation> findInside(String pattern) {
         List<fmrLocation> rLoc = new ArrayList<>();
         for (fmrLocation loc: locations) {
             if (loc.Name.matches("(?i:.*" + pattern + ".*)"))
             {
                 rLoc.add(loc);
+                System.out.println(loc.toString());
             }
         }
         return rLoc;

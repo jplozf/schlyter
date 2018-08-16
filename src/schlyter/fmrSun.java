@@ -43,7 +43,8 @@ public class fmrSun extends fmrObject
 //******************************************************************************
     public fmrSun()
     {
-        super(K_N0, K_N1,
+        super("Sun",
+                K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
                 K_a0, K_a1,
@@ -53,7 +54,8 @@ public class fmrSun extends fmrObject
 
     public fmrSun(fmrDate d)
     {
-        super(K_N0, K_N1,
+        super("Sun",
+                K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
                 K_a0, K_a1,
@@ -64,7 +66,8 @@ public class fmrSun extends fmrObject
 
     public fmrSun(fmrDate d, fmrLocation l)
     {
-        super(K_N0, K_N1,
+        super("Sun",
+                K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
                 K_a0, K_a1,
