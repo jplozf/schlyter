@@ -3,7 +3,7 @@ package schlyter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
+// 20180817
 public class fmrMoon extends fmrObject
 {
 

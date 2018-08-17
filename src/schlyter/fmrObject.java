@@ -2,7 +2,7 @@ package schlyter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// 20180817
 //******************************************************************************
 // http://stjarnhimlen.se/comp/ppcomp.html
 //******************************************************************************

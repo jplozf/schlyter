@@ -1,6 +1,8 @@
 package schlyter;
 import java.util.TimeZone;
 
+// 20180817
+
 public class Schlyter {
 
     private static fmrDate zeDate;

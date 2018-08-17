@@ -2,7 +2,7 @@ package schlyter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// 20180817
 public class fmrLocation {
 
     public double Latitude;
