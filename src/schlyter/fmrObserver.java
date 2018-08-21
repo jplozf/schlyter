@@ -1,5 +1,5 @@
 package schlyter;
-// 20180817
+
 public class fmrObserver
 {
     private  String obsDescription;

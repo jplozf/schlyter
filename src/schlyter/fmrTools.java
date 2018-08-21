@@ -1,5 +1,5 @@
 package schlyter;
-// 20180817
+
 public class fmrTools
 {
     static double radeg = 180.0 / Math.PI;

@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 // 20180817
 public class fmrMoon extends fmrObject
 {
-
     public double MeanLongitude;
     public double XRect;
     public double YRect;
@@ -22,6 +21,7 @@ public class fmrMoon extends fmrObject
     public double RightAscension;
     public double Declination;
 
+    private final static String Name = "The Moon";
     private final static double K_N0 = 125.1228;
     private final static double K_N1 = -0.0529538083;
     private final static double K_i0 = 5.1454;
@@ -42,7 +42,7 @@ public class fmrMoon extends fmrObject
 //******************************************************************************
     public fmrMoon()
     {
-        super("Moon", 
+        super(Name, 
                 K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
@@ -53,7 +53,7 @@ public class fmrMoon extends fmrObject
 
     public fmrMoon(fmrDate d)
     {
-        super("Moon",
+        super(Name,
                 K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,

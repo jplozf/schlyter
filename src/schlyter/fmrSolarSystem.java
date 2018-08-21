@@ -1,5 +1,5 @@
 package schlyter;
-// 20180817
+
 public class fmrSolarSystem {
     public static fmrDate date;
     public static fmrSun sun;

@@ -3,9 +3,9 @@ package schlyter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-// 20180817
+
 public class fmrSun extends fmrObject
-{
+{    
     public double MeanLongitude;
     public double XRect;
     public double YRect;
@@ -21,6 +21,7 @@ public class fmrSun extends fmrObject
     public double RightAscension;
     public double Declination;
     //
+    private final static String Name = "The Sun";
     private final static double K_N0 = 0.0;
     private final static double K_N1 = 0.0;
     private final static double K_i0 = 0.0;
@@ -34,7 +35,8 @@ public class fmrSun extends fmrObject
     private final static double K_M0 = 356.0470;
     private final static double K_M1 = 0.9856002585;
     //
-    public double SIDTIME;
+    public double GMST0;        // Sideral Time at the Greenwich Meridian
+    public double SIDTIME;      // Sideral Time
     //
     private final static Logger logger = Logger.getLogger("");
 
@@ -43,7 +45,7 @@ public class fmrSun extends fmrObject
 //******************************************************************************
     public fmrSun()
     {
-        super("Sun",
+        super(Name,
                 K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
@@ -54,7 +56,7 @@ public class fmrSun extends fmrObject
 
     public fmrSun(fmrDate d)
     {
-        super("Sun",
+        super(Name,
                 K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
@@ -66,7 +68,7 @@ public class fmrSun extends fmrObject
 
     public fmrSun(fmrDate d, fmrLocation l)
     {
-        super("Sun",
+        super(Name,
                 K_N0, K_N1,
                 K_i0, K_i1,
                 K_w0, K_w1,
@@ -107,11 +109,11 @@ public class fmrSun extends fmrObject
     public final void setLocation(fmrLocation l)
     {
         super.setLocation(l);
-        /*
-        this.GMST0 = fmrDate.reduceAngle(this.Longitude + 180.0) / 15.0;             // Here, we're talking about solar longitude !!!
+        this.GMST0 = fmrDate.reduceAngle(this.MeanLongitude + 180.0) / 15.0;         // Here, we're talking about solar longitude !!!
+        System.out.println("longitude : " + l.Longitude);
+        System.out.println("UTC       : " + this.d.getUTCDouble());
         this.SIDTIME = this.GMST0 + (l.Longitude / 15.0) + this.d.getUTCDouble();    // Here, it's the location's longitude
         this.SIDTIME = this.SIDTIME % 24.0;
-         */
     }
 
 //******************************************************************************
@@ -135,6 +137,8 @@ public class fmrSun extends fmrObject
         System.out.println("ZEquat          = " + this.ZEquat);
         System.out.println("Right Ascension = " + fmrDate.dd2hms(this.RightAscension));
         System.out.println("Declination     = " + fmrDate.dd2dms(this.Declination));
+        System.out.println("GMST0           = " + this.GMST0);
+        System.out.println("Sideral Time    = " + fmrDate.hd2hms(this.SIDTIME));
     }
 
 //******************************************************************************

@@ -1,26 +1,26 @@
 package schlyter;
+
 import java.util.TimeZone;
 
-// 20180817
-///////////
-
 public class Schlyter {
-
-    private static fmrDate zeDate;
-    private static fmrLocation zeLocation;
     private static fmrSolarSystem solarSystem;
+    private static fmrObserver obs;
 
     //***********************************************************************
     // main()
     //***********************************************************************
     public static void main(String[] args) {
-        zeDate = new fmrDate(1990, 4, 19, 0, 0, 0, TimeZone.getTimeZone("UT"));
-        zeLocation = fmrLocation.findStartWith("test").get(0);
-        solarSystem = new fmrSolarSystem(new fmrObserver(zeDate, zeLocation, "TEST SITE"));
+        obs = new fmrObserver(
+                new fmrDate(1990, 4, 19, 0, 0, 0, TimeZone.getTimeZone("UT")), 
+//                new fmrDate(), 
+                fmrLocation.findStartWith("test").get(0), 
+                "TEST SITE");
+        solarSystem = new fmrSolarSystem(obs);
         showDetailsSun();
         showDetailsMoon();
         solarSystem.sun.printAll();
-        solarSystem.moon.printAll();
+        // solarSystem.moon.printAll();
+        // solarSystem.mars.printAll();
     }
 
     //***********************************************************************
