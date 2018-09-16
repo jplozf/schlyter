@@ -54,7 +54,7 @@ public class fmrSun extends fmrObject
                 K_M0, K_M1);
     }
 
-    public fmrSun(fmrDate d)
+    public fmrSun(fmrJDate d)
     {
         super(Name,
                 K_N0, K_N1,
@@ -66,7 +66,7 @@ public class fmrSun extends fmrObject
         this.setDate(d);
     }
 
-    public fmrSun(fmrDate d, fmrLocation l)
+    public fmrSun(fmrJDate d, fmrLocation l)
     {
         super(Name,
                 K_N0, K_N1,
@@ -83,7 +83,7 @@ public class fmrSun extends fmrObject
 // setDate()
 //******************************************************************************
     @Override
-    public final void setDate(fmrDate d)
+    public final void setDate(fmrJDate d)
     {
         super.setDate(d);
         this.MeanLongitude = this.getMeanLongitude();
@@ -91,7 +91,7 @@ public class fmrSun extends fmrObject
         this.YRect = this.getYRect();
         this.Distance = this.getDistance(this.XRect, this.YRect);
         this.TrueAnomaly = this.getTrueAnomaly(this.XRect, this.YRect);
-        this.Longitude = fmrDate.reduceAngle(this.TrueAnomaly + this.w);
+        this.Longitude = fmrJDate.reduceAngle(this.TrueAnomaly + this.w);
         this.XEclRect = this.Distance * Math.cos(Math.toRadians(this.Longitude));
         this.YEclRect = this.Distance * Math.sin(Math.toRadians(this.Longitude));
         this.ZEclRect = 0;
@@ -109,7 +109,7 @@ public class fmrSun extends fmrObject
     public final void setLocation(fmrLocation l)
     {
         super.setLocation(l);
-        this.GMST0 = fmrDate.reduceAngle(this.MeanLongitude + 180.0) / 15.0;         // Here, we're talking about solar longitude !!!
+        this.GMST0 = fmrJDate.reduceAngle(this.MeanLongitude + 180.0) / 15.0;         // Here, we're talking about solar longitude !!!
         System.out.println("longitude : " + l.Longitude);
         System.out.println("UTC       : " + this.d.getUTCDouble());
         this.SIDTIME = this.GMST0 + (l.Longitude / 15.0) + this.d.getUTCDouble();    // Here, it's the location's longitude
@@ -135,10 +135,10 @@ public class fmrSun extends fmrObject
         System.out.println("XEquat          = " + this.XEquat);
         System.out.println("YEquat          = " + this.YEquat);
         System.out.println("ZEquat          = " + this.ZEquat);
-        System.out.println("Right Ascension = " + fmrDate.dd2hms(this.RightAscension));
-        System.out.println("Declination     = " + fmrDate.dd2dms(this.Declination));
+        System.out.println("Right Ascension = " + fmrJDate.dd2hms(this.RightAscension));
+        System.out.println("Declination     = " + fmrJDate.dd2dms(this.Declination));
         System.out.println("GMST0           = " + this.GMST0);
-        System.out.println("Sideral Time    = " + fmrDate.hd2hms(this.SIDTIME));
+        System.out.println("Sideral Time    = " + fmrJDate.hd2hms(this.SIDTIME));
     }
 
 //******************************************************************************
@@ -154,7 +154,7 @@ public class fmrSun extends fmrObject
         {
             s = new String[]
             {
-                "Longitude", fmrDate.dd2dms(this.Longitude)
+                "Longitude", fmrJDate.dd2dms(this.Longitude)
             };
             out.add(s);
 
@@ -169,13 +169,13 @@ public class fmrSun extends fmrObject
         {
             s = new String[]
             {
-                "Right Ascension", fmrDate.dd2hms(this.RightAscension)
+                "Right Ascension", fmrJDate.dd2hms(this.RightAscension)
             };
             out.add(s);
 
             s = new String[]
             {
-                "Declination", fmrDate.dd2dms(this.Declination)
+                "Declination", fmrJDate.dd2dms(this.Declination)
             };
             out.add(s);
         }
@@ -184,13 +184,13 @@ public class fmrSun extends fmrObject
         {
             s = new String[]
             {
-                "GMST0", fmrDate.dd2hms(this.d.GMST0)
+                "GMST0", fmrJDate.dd2hms(this.d.GMST0)
             };
             out.add(s);
 
             s = new String[]
             {
-                "Sideral Time", fmrDate.hd2hms(this.SIDTIME)
+                "Sideral Time", fmrJDate.hd2hms(this.SIDTIME)
             };
             out.add(s);
         }
@@ -202,7 +202,7 @@ public class fmrSun extends fmrObject
 //******************************************************************************
     public double getMeanLongitude()
     {
-        return fmrDate.reduceAngle(this.w + this.M);
+        return fmrJDate.reduceAngle(this.w + this.M);
     }
 
 //******************************************************************************

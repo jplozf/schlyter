@@ -51,7 +51,7 @@ public class fmrMoon extends fmrObject
                 K_M0, K_M1);
     }
 
-    public fmrMoon(fmrDate d)
+    public fmrMoon(fmrJDate d)
     {
         super(Name,
                 K_N0, K_N1,
@@ -67,7 +67,7 @@ public class fmrMoon extends fmrObject
 // setDate()
 //******************************************************************************
     @Override
-    public final void setDate(fmrDate d)
+    public final void setDate(fmrJDate d)
     {
         super.setDate(d);
         this.MeanLongitude = this.getMeanLongitude();
@@ -75,7 +75,7 @@ public class fmrMoon extends fmrObject
         this.YRect = this.getYRect();
         this.Distance = this.getDistance(this.XRect, this.YRect);
         this.TrueAnomaly = this.getTrueAnomaly(this.XRect, this.YRect);
-        this.Longitude = fmrDate.reduceAngle(this.TrueAnomaly + this.w);
+        this.Longitude = fmrJDate.reduceAngle(this.TrueAnomaly + this.w);
         this.XEclRect = this.Distance * Math.cos(Math.toRadians(this.Longitude));
         this.YEclRect = this.Distance * Math.sin(Math.toRadians(this.Longitude));
         this.ZEclRect = 0;
@@ -116,8 +116,8 @@ public class fmrMoon extends fmrObject
         System.out.println("XEquat          = " + this.XEquat);
         System.out.println("YEquat          = " + this.YEquat);
         System.out.println("ZEquat          = " + this.ZEquat);
-        System.out.println("Right Ascension = " + fmrDate.dd2hms(this.RightAscension));
-        System.out.println("Declination     = " + fmrDate.dd2dms(this.Declination));
+        System.out.println("Right Ascension = " + fmrJDate.dd2hms(this.RightAscension));
+        System.out.println("Declination     = " + fmrJDate.dd2dms(this.Declination));
     }
 
 //******************************************************************************
@@ -132,13 +132,13 @@ public class fmrMoon extends fmrObject
         {
             s = new String[]
             {
-                "Longitude", fmrDate.dd2dms(this.Longitude)
+                "Longitude", fmrJDate.dd2dms(this.Longitude)
             };
             out.add(s);
 
             s = new String[]
             {
-                "Latitude", fmrDate.dd2dms(0.0)
+                "Latitude", fmrJDate.dd2dms(0.0)
             };
             out.add(s);
         }
@@ -157,13 +157,13 @@ public class fmrMoon extends fmrObject
         {
             s = new String[]
             {
-                "Right Ascension", fmrDate.dd2hms(this.RightAscension)
+                "Right Ascension", fmrJDate.dd2hms(this.RightAscension)
             };
             out.add(s);
 
             s = new String[]
             {
-                "Declination", fmrDate.dd2dms(this.Declination)
+                "Declination", fmrJDate.dd2dms(this.Declination)
             };
             out.add(s);
         }
@@ -176,7 +176,7 @@ public class fmrMoon extends fmrObject
 //******************************************************************************
     public double getMeanLongitude()
     {
-        return fmrDate.reduceAngle(this.w + this.M);
+        return fmrJDate.reduceAngle(this.w + this.M);
     }
 
 //******************************************************************************

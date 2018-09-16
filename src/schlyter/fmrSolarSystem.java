@@ -1,7 +1,7 @@
 package schlyter;
 
 public class fmrSolarSystem {
-    public static fmrDate date;
+    public static fmrJDate date;
     public static fmrSun sun;
     public static fmrMoon moon;
     public static fmrObject mercury;
@@ -31,7 +31,7 @@ public class fmrSolarSystem {
         this.setLocation(obs.getLocation());
     }
 
-    public void setDate(fmrDate d) {
+    public void setDate(fmrJDate d) {
         date = d;
         sun.setDate(date);
         moon.setDate(date);

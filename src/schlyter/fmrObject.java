@@ -22,7 +22,7 @@ public class fmrObject
     public double e;        // eccentricity (0=circle, 0-1=ellipse, 1=parabola)
     public double M;        // mean anomaly (0 at perihelion; increases uniformly with time)
     public double E;        // eccentric anomaly
-    public fmrDate d;       // date of event
+    public fmrJDate d;       // date of event
     public fmrLocation loc; // location of event
     public double MeanLongitude;
     public double XRect;
@@ -69,7 +69,7 @@ public class fmrObject
 //******************************************************************************
 // setDate()
 //******************************************************************************
-    public void setDate(fmrDate d)
+    public void setDate(fmrJDate d)
     {
         this.d = d;
         this.computeTemporalEvents();
@@ -156,7 +156,7 @@ public class fmrObject
         this.YRect = this.getYRect();
         this.Distance = this.getDistance(this.XRect, this.YRect);
         this.TrueAnomaly = this.getTrueAnomaly(this.XRect, this.YRect);
-        this.Longitude = fmrDate.reduceAngle(this.TrueAnomaly + this.w);
+        this.Longitude = fmrJDate.reduceAngle(this.TrueAnomaly + this.w);
         this.XEclRect = this.Distance * Math.cos(Math.toRadians(this.Longitude));
         this.YEclRect = this.Distance * Math.sin(Math.toRadians(this.Longitude));
         this.ZEclRect = 0;
@@ -181,7 +181,7 @@ public class fmrObject
     public void printAll()
     {
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(">>> OBJECT'S NAME                                                 = " + this.Name);
+        System.out.println(">>> OBJECT NAME                                                   = " + this.Name);
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("d : Date of event                                                 = " + this.d);
         System.out.println("N : Longitude of the ascending node                               = " + this.N);
@@ -205,13 +205,13 @@ public class fmrObject
         {
             s = new String[]
             {
-                "Longitude", fmrDate.dd2dms(this.Longitude)
+                "Longitude", fmrJDate.dd2dms(this.Longitude)
             };
             out.add(s);
 
             s = new String[]
             {
-                "Latitude", fmrDate.dd2dms(0.0)
+                "Latitude", fmrJDate.dd2dms(0.0)
             };
             out.add(s);
         }
@@ -230,13 +230,13 @@ public class fmrObject
         {
             s = new String[]
             {
-                "Right Ascension", fmrDate.dd2hms(this.RightAscension)
+                "Right Ascension", fmrJDate.dd2hms(this.RightAscension)
             };
             out.add(s);
 
             s = new String[]
             {
-                "Declination", fmrDate.dd2dms(this.Declination)
+                "Declination", fmrJDate.dd2dms(this.Declination)
             };
             out.add(s);
         }
@@ -289,7 +289,7 @@ public class fmrObject
 //******************************************************************************
     double getMeanAnomaly(double d)
     {
-        return fmrDate.reduceAngle(this.M1 * d + this.M0);
+        return fmrJDate.reduceAngle(this.M1 * d + this.M0);
     }
 
 //******************************************************************************
@@ -323,7 +323,7 @@ public class fmrObject
 //******************************************************************************
     public double getMeanLongitude()
     {
-        return fmrDate.reduceAngle(this.w + this.M);
+        return fmrJDate.reduceAngle(this.w + this.M);
     }
 
 //******************************************************************************

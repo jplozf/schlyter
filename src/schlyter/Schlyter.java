@@ -1,6 +1,6 @@
 package schlyter;
 
-import java.util.TimeZone;
+import java.time.ZoneId;
 
 public class Schlyter {
     private static fmrSolarSystem solarSystem;
@@ -11,8 +11,7 @@ public class Schlyter {
     //***********************************************************************
     public static void main(String[] args) {
         obs = new fmrObserver(
-                new fmrDate(1990, 4, 19, 0, 0, 0, TimeZone.getTimeZone("UT")), 
-//                new fmrDate(), 
+                new fmrJDate(1990, 4, 19, 0, 0, 0, ZoneId.of("UTC")), 
                 fmrLocation.findStartWith("test").get(0), 
                 "TEST SITE");
         solarSystem = new fmrSolarSystem(obs);
